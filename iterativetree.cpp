@@ -38,5 +38,5 @@ int main()
     root->right->left = new node(8); 
     root->right->right = new node(12);
     
-    traversal_trick(root);
+    traversal_trick(root)
 }
