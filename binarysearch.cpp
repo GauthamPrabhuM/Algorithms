@@ -1,27 +1,41 @@
- #include <bits/stdc++.h> 
-using namespace std; 
-  
-int binarySearch(int arr[], int l, int r, int x) 
-{ 
-    while (l <= r) { 
-        int m = l + (r - l) / 2; 
-          if (arr[m] == x) 
-            return m; 
-          if (arr[m] < x) 
-            l = m + 1; 
-          else
-            r = m - 1; 
-    } 
-  
-    return -1; 
-} 
-  
- void main() 
-{ 
-    int arr[] = { 2, 3, 4, 10, 40 }; 
-    int x = 10; 
-    int n = sizeof(arr) / sizeof(arr[0]); 
-    int result = binarySearch(arr, 0, n - 1, x); 
-    (result == -1) ? cout << "Element is not present in array"
-                   : cout << "Element is present at index " << result; 
-} 
+#include <iostream>
+#include<bits/stdc++.h>
+using namespace std;
+int binary_search_iterative(const vector<int> &a, int x) 
+{
+    int left = 0, right = (int) a.size();
+    while (left <= right) {
+        int mid = left + (right - left) / 2;
+        if (x == a[mid]) return mid;
+        else if (x < a[mid]) right = mid - 1;
+        else left = mid + 1;
+    }
+    return -1;
+}
+
+int linear_search(const vector<int> &a, int x)
+ {
+    for (size_t i = 0; i < a.size(); ++i) 
+        if (a[i] == x) return i;
+    
+    return -1;
+}
+
+int main() 
+{
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (size_t i = 0; i < a.size(); i++) {
+        cin >> a[i];
+    }
+    int m;
+    cin >> m;
+    vector<int> b(m);
+    for (int i = 0; i < m; ++i) 
+        cin >> b[i];
+    
+    for (int i = 0; i < m; ++i) 
+        cout << binary_search_iterative(a, b[i]) << ' ';
+    
+}
